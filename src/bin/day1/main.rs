@@ -1,11 +1,10 @@
-use std::fs::File;
 use std::io::{prelude::*, BufReader};
 
+extern crate aoc2023;
+use aoc2023::my_lib;
+
 fn main() -> std::io::Result<()> {
-    let file = match File::open("src/bin/day1/input.txt") {
-        Ok(file) => file,
-        Err(e) => return Err(e)
-    };
+    let file = my_lib::open_file("src/bin/day1/input.txt");
     let reader = BufReader::new(file);
     let mut entire_calibration = 0;
     for line in reader.lines() {
