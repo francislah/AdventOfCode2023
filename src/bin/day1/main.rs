@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::{prelude::*, BufReader};
 
 fn main() -> std::io::Result<()> {
-    let file = match File::open("input.txt") {
+    let file = match File::open("src/bin/day1/input.txt") {
         Ok(file) => file,
         Err(e) => return Err(e)
     };
