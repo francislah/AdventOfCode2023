@@ -28,3 +28,10 @@ pub fn read_file_into_vec(file: &File) -> Vec<String> {
     });
     lines
 }
+
+pub fn string_to_i32(str: &str) -> i32 {
+    match str.parse::<i32>() {
+        Ok(num) => num,
+        Err(e) => {println!("Error: {}, returning 0", e); 0}
+    }
+}
