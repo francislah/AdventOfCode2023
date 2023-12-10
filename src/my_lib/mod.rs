@@ -15,7 +15,7 @@ pub fn open_file(filepath: &str) -> File {
 pub fn read_file(reader: BufReader<File>) {
     reader.lines().for_each(|line| match line {
         Ok(line) => println!("{}", line),
-        Err(e) => println!("Error: {}", e)
+        Err(e) => println!("Error: {}", e),
     })
 }
 
@@ -24,7 +24,7 @@ pub fn read_file_into_vec(file: &File) -> Vec<String> {
     let reader = BufReader::new(file);
     reader.lines().for_each(|line| match line {
         Ok(line) => lines.push(line),
-        Err(e) => println!("Error: {}", e)
+        Err(e) => println!("Error: {}", e),
     });
     lines
 }
@@ -32,6 +32,9 @@ pub fn read_file_into_vec(file: &File) -> Vec<String> {
 pub fn string_to_i32(str: &str) -> i32 {
     match str.parse::<i32>() {
         Ok(num) => num,
-        Err(e) => {println!("Error: {}, returning 0", e); 0}
+        Err(e) => {
+            println!("Error: {}, returning 0", e);
+            0
+        }
     }
 }
