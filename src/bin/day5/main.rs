@@ -24,9 +24,26 @@ fn main() {
     for line in &lines {
         // println!("line: {}", line);
         if line.starts_with("seeds:") {
+            let seeds_setting = get_num_vec(&line[6..]);
+            let mut seeds: Vec<i64> = vec![];
+            let mut start: i64 = 0;
+            let mut qty: i64 = 0;
+            for (i, v) in seeds_setting.iter().enumerate() {
+                if i % 2 == 0 {
+                    start = *v;
+                } else {
+                    qty = *v;
+                    for x in 0..qty {
+                        // println!("start: {}", start);
+                        seeds.push(start);
+                        start += 1;
+                    }
+                }
+            }
+            // println!("{:?}", seeds);
             almanac
                 .entry(context.1)
-                .or_insert_with(|| (get_num_vec(&line[6..]), vec![]));
+                .or_insert_with(|| (seeds.clone() , vec![]));
         } else if line.is_empty() {
             continue;
         } else if line.ends_with(":") {
